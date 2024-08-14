@@ -189,7 +189,7 @@ class Purchase(models.Model):
 
 
 class Callback(models.Model):
-    result = models.CharField()
+    result = models.CharField(max_length=200)
     date = models.DateTimeField(default=timezone.now)
 
 
