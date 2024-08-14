@@ -283,6 +283,7 @@ def reset_complete(request):
 def reset_done(request):
     return render(request, 'reset_done.html')
 
+###################### end authentications ##############################
 
 
 # #########################transactions#########################
@@ -420,8 +421,9 @@ def make_deposit(request, id):
 def transactions_completed(request):
     return render(request, 'transactions_completed.html')
 
+####################### end transactions #########################
 
-# deposit logic
+###################### deposit logic #################################
 @csrf_exempt
 def deposit(request):
     transaction = request.session.get('transaction_id')
@@ -493,6 +495,9 @@ def deposit(request):
         context = {'form': form}
     return render(request, 'admin/amount.html', context)
 
+########################### end deposit logic #####################
+
+####################### withdraw logics ##########################
 def make_withdraw(request, id):
     try:
         # get the current date
@@ -597,7 +602,7 @@ def withdraw_status_pending(request):
     #return a HttpResponse of all the active users withdraw request 
     return render(request, 'user/withdraw_pending.html', {'withdraw': withdraw})
 
-# Items
+############################### Items ###################################
 @login_required(login_url='login')
 def assets(request):
     items = Item.objects.all()
@@ -644,7 +649,7 @@ def purchased_items(request):
 
     return render(request, 'assets/purchased_items.html', {'purchases': purchases, 'profit': profit})
 
-# ***************recommendation***************
+################################recommendation ##########################
 def recommended_users(request):
     profile = []
     for prof in UserProfile.objects.all():
@@ -654,7 +659,7 @@ def recommended_users(request):
     recommended_users = len(profile)
     return HttpResponse('recommended_users: ' + str(recommended_users))
 
-# ***************edit users***************
+###############################edit users ##################
 
 # delete a user
 def destroy(request, id): 
@@ -679,7 +684,7 @@ def destroy_withdraw(request, id):
     user.delete()
     return redirect('amount_withdrawn')
 
-#ajax requests
+######################ajax requests ########################
 def get_chart_data(request):
     # Replace this with your actual logic to fetch updated data
     updated_data = [12, 99, 0, 6, 70]
