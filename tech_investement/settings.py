@@ -105,12 +105,12 @@ WSGI_APPLICATION = 'tech_investement.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 #####################sqlite####################
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 #####################end sqlite####################
 
 
@@ -140,16 +140,16 @@ DATABASES = {
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres.dffppwpeipszpibbxboa',
-#         'PASSWORD': 'Pk@11241008075',
-#         'HOST': 'aws-0-eu-central-1.pooler.supabase.com',   # Or the hostname where your MySQL server is running
-#         'PORT': '6543',        # Default MySQL port
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres.dffppwpeipszpibbxboa',
+        'PASSWORD': 'Pk@11241008075',
+        'HOST': 'aws-0-eu-central-1.pooler.supabase.com',   # Or the hostname where your MySQL server is running
+        'PORT': '6543',        # Default MySQL port
+    }
+}
 #####################end postgress####################
 
 # Password validation
