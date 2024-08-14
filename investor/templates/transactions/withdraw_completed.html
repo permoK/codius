@@ -1,0 +1,30 @@
+<div class="col-md-12">
+<div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <th><input type="checkbox" id="checkall" /></th>
+            <th>ID</th>
+            <th>username</th>
+			<th>Amount Withdrawn</th>
+			<th>Confirmation name</th>
+			<th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+        {% for withdraw in withdraw  %}  
+            <tr>  
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>{{ withdraw.id }}</td> 
+            <td>{{ withdraw.username }}</td> 
+            <td>{{ withdraw.withdrawn }}</td>
+			<td>{{ withdraw.name }}</td>
+			<td>{{ withdraw.date }}</td>
+            <!-- <td><a href="/edit/{{ user.id }}" class="btn btn-primary">Edit</a></td> -->
+            <!-- <td><a href="/delete_transaction/{{ transaction.id }}" class="btn btn-danger">Delete</a></td> -->  
+            </tr>  
+
+		{% endfor %}
+        </tbody>
+        </table>
+        </div>

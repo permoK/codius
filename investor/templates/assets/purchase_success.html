@@ -1,0 +1,41 @@
+{% extends "cards.html" %}
+
+{% block header %}
+
+{% for message in messages %}
+				{% if "success" in message.tags %}
+					<span id='message' style="color: #00ff2b; top: 110%; position: absolute; left: 40%;">{{ message }}</span>
+				{% endif %}
+{% endfor %}
+
+{% endblock header %}
+
+{% block balance %}
+
+balance: {{ balance }}<br>
+
+{% endblock balance %}
+
+{% block bodystyle %}
+
+{% endblock%}
+
+{% block card %}
+
+	{% for asset in items %}
+
+		<section class="card {{ asset.title }}">
+				<div class="icon">
+					<img src="{{ asset.image.url }}" alt="{{ asset.name }}">
+				</div>
+				<h3>{{ asset.name }}</h3>
+				<span>{{ asset.description }}..</span>
+				<span>Cost: {{ asset.price }}</span>
+				<span>Profit: {{ asset.release_amount }}</span>
+				<a><button style="background: #7b7b7b;"> Purchased </button></a><br>
+				<a  href="/assets/"><button style="background: #afafaf; color: black; " > back </button></a>
+		</section>
+
+	{% endfor %}
+
+{% endblock %}

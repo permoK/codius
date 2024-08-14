@@ -1,0 +1,9 @@
+<h1>Callback List</h1>
+<ul>
+	{% for callback in callback %}
+	<li>
+		<strong>Data:</strong> {{ callback.result }}<br>
+		<strong>Date:</strong> {{ callback.date }}<br>
+	</li><br>
+	{% endfor %}
+</ul><br>

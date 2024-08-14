@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Cards</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+
+<style>
+:root {
+	--bg: black;
+	--txt: white;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: var(--bg);
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--txt);
+
+    font-size: 16px;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: var(--bg);
+	backdrop-filter: blur(10px); /* Add blur effect */
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+	box-shadow: 0 0 20px -10px var(--txt);
+}
+
+main.cards {
+    display: flex;
+    padding: 32px;
+	overflow: auto !important;
+}
+
+main.cards section.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: var(--bg);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    max-height: 468px;
+    margin-left: 32px;
+}
+
+main.cards section.card:first-child {
+    margin-left: 0;
+	margin-top: inherit;
+}
+
+main.cards section.card .icon {
+    width: 64px;
+    height: 64px;
+}
+
+main.cards section.card img {
+    width: 100%;
+}
+
+main.cards section.card h3 {
+    font-size: 100%;
+    margin: 16px 0;
+}
+
+main.cards section.card span {
+    font-weight: 300;
+    max-width: 240px;
+    font-size: 80%;
+    margin-bottom: 16px;
+}
+
+main.cards section.card button {
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    border-radius: 32px;
+    border: 0;
+    cursor: pointer;
+    font-size: 80%;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 16px 0;
+}
+
+main.cards section.card.contact button {
+    background: linear-gradient(to right, #10a37f, #cbffea);
+}
+main.cards section.card.shop button {
+    background: linear-gradient(to right, #3E8AFF, #BBDEFF);
+}
+main.cards section.card.about button {
+    background: linear-gradient(to right, #f3ba2f, #ffecc7);
+}
+
+main.cards section.card.contact {
+    box-shadow: 20px 20px 50px -25px #5bdba8;
+}
+main.cards section.card.shop {
+    box-shadow: 20px 20px 50px -25px #4681bf;
+}
+main.cards section.card.about {
+    box-shadow: 20px 20px 50px -25px #e3a045;
+}
+
+@media screen and (max-width: 280px) and (max-height: 653px){
+
+
+	main.cards section.card:first-child {
+		margin-left: 0;
+		margin-top: 180vh;
+	}
+	main.cards {
+		flex-direction: column;
+		margin-top: 90vh;
+	}
+
+	main.cards section.card {
+		margin-left: 0;
+		margin-bottom: 32px;
+	}
+
+	main.cards section.card:last-child {
+		margin-bottom: 8vh;
+	}
+
+	main.cards section.card button {
+		font-size: 50%;
+	}
+}
+
+
+@media screen and (min-width: 281px) and (max-width: 720px){
+	
+	main.cards section.card:first-child {
+		margin-top: 100vh;
+	}
+
+
+    main.cards {
+		margin-top: 75vh;
+        flex-direction: column;
+    }
+
+    main.cards section.card {
+        margin-left: 0;
+        margin-bottom: 32px;
+    }
+
+    main.cards section.card:last-child {
+        height: min-content;
+		margin-top: auto;
+    }
+
+    main.cards section.card button {
+        font-size: 70%;
+    }
+
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1280px){
+	body{
+	height: 86vh;
+
+}
+
+
+
+</style>
+</head>
+<body {%block bodystyle %}{% endblock %} >
+
+	<header>
+		<div>
+
+			<a href="{% url "dashboard" %}"  >
+				<!-- <img src="{% static "images/dashboard.png" %}" alt="logo" style="width: 50px; height: 50px; margin-left: 10px;"> -->
+				<span style="font-size: 30px; color: var(--txt);" class="material-symbols-outlined">
+					home
+				</span>
+
+
+			</a>
+        
+    </div>
+		<div class="container">
+			<h2 style="margin-left: 10px;">{%block header %} {% endblock %} </h1>
+			<h3 style="margin-left: 10px; color: green;">{% block balance %}{% endblock %}</h2>
+			
+		</div>
+<span style="margin-right: 1rem; font-size: 30px;" id="colorSwitchButton" class="material-symbols-outlined">
+routine
+</span>
+	</header>
+
+	<main class="cards" {% block main_card_style %}{% endblock main_card_style %}>
+	{% block card %}	
+   	{% endblock %}
+	</main>
+<script>
+        const button = document.getElementById('colorSwitchButton');
+        const root = document.documentElement;
+
+        button.addEventListener('click', function() {
+            const currentBgColor = getComputedStyle(root).getPropertyValue('--bg').trim();
+            const currentTxtColor = getComputedStyle(root).getPropertyValue('--txt').trim();
+
+            // Toggle colors
+            root.style.setProperty('--bg', currentTxtColor);
+            root.style.setProperty('--txt', currentBgColor);
+
+            // Save the current color scheme to localStorage
+            localStorage.setItem('colorScheme', JSON.stringify({ bg: currentTxtColor, txt: currentBgColor }));
+        });
+
+        // Check if there's a color scheme saved in localStorage and apply it
+        const savedColorScheme = localStorage.getItem('colorScheme');
+        if (savedColorScheme) {
+            const { bg, txt } = JSON.parse(savedColorScheme);
+            root.style.setProperty('--bg', bg);
+            root.style.setProperty('--txt', txt);
+        }
+    </script>
+</body>
+</html>
+

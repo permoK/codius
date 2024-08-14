@@ -1,0 +1,60 @@
+<!-- //myapp/templates/base.html -->
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<title>{% block title %}{% endblock %}</title>
+{% load static %}  
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+<link rel = "stylesheet" type = "text/css" href = "https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css"/>
+<script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+</head> 
+<body>
+<div class="container">
+ <div class="row">
+	 <h4> {% block heading  %}{% endblock %} </h4> 
+    {% block content %}{% endblock %}
+ </div>
+</div>
+ 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src = "https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#bootstrapdatatable').DataTable({     
+      "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+        "iDisplayLength": 5
+       } 
+    );
+} );
+</script>
+{% block extrascripts %}
+{% endblock extrascripts %}
+<script>
+        const button = document.getElementById('colorSwitchButton');
+        const root = document.documentElement;
+
+        button.addEventListener('click', function() {
+            const currentBgColor = getComputedStyle(root).getPropertyValue('--bg').trim();
+            const currentTxtColor = getComputedStyle(root).getPropertyValue('--txt').trim();
+
+            // Toggle colors
+            root.style.setProperty('--bg', currentTxtColor);
+            root.style.setProperty('--txt', currentBgColor);
+
+            // Save the current color scheme to localStorage
+            localStorage.setItem('colorScheme', JSON.stringify({ bg: currentTxtColor, txt: currentBgColor }));
+        });
+
+        // Check if there's a color scheme saved in localStorage and apply it
+        const savedColorScheme = localStorage.getItem('colorScheme');
+        if (savedColorScheme) {
+            const { bg, txt } = JSON.parse(savedColorScheme);
+            root.style.setProperty('--bg', bg);
+            root.style.setProperty('--txt', txt);
+        }
+    </script>
+</body> 
+</html>

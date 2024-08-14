@@ -1,0 +1,21 @@
+<!-- //myapp/templates/show.html -->
+{% extends "base.html" %}
+
+{% load static %}
+  
+{% block title %}Transactions History{% endblock title %}
+
+{% block heading %}Transactions History{% endblock heading %}
+  
+{% block content %}
+ <div class="col-md-12">
+	 <span><a hx-get="{% url "deposit_completed" %}" hx-target="#history" hx-push-url="false" class="btn btn-primary">Deposited
+				<img style="width: 20px;"  class="htmx-indicator" src="{% static "images/ZKZg.gif" %}">
+		 </a></span>
+        <span><a hx-get="{% url "withdraw_completed" %}" hx-target="#history" hx-push-url="false" class="btn btn-primary">Withdrawals
+				<img style="width: 20px;"  class="htmx-indicator" src="{% static "images/ZKZg.gif" %}">
+			</a></span>
+		<div id="history" ></div>
+        
+    </div>
+{% endblock content %}

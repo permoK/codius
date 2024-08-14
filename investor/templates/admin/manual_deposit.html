@@ -1,0 +1,35 @@
+<!-- searches for a unique id and returns the database for that id and then a deposit form is displayed -->
+<!-- ```html -->
+
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block title %}
+admin Deposit
+{% endblock title %}
+
+
+{% block links %}
+
+{% endblock links %}
+
+
+
+{% block body %}
+<div id="result">
+<h1>Deposit Form</h1>
+	<form id="search-form" action="" method="post" > 
+        <!-- <input type="text" id="transaction-id" placeholder="Enter Transaction ID" name="transaction_id"> -->
+		{% csrf_token %}
+
+		<label for="transaction_id">Transaction ID:</label>
+		{{ form.as_p }}
+        <button type="submit" id="search-button" hx-POST="{% url 'get_transaction' %}" hx-target="#result" hx-Replace="innerHTML">Search</button>
+	
+	</form>
+
+</div>
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+
+{% endblock body %}

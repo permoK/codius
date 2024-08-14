@@ -1,0 +1,27 @@
+<!-- //myapp/templates/edit.html -->
+{% extends "base.html" %}
+  
+{% block title %}Add New Employee Records{% endblock title %}
+  
+{% block content %}
+<div class="col-md-12">
+    <form method="POST" class="post-form" action="/edit_deposit/{{user.id}}">  
+    {% csrf_token %}  
+    <div class="container">   
+        <div class="col-12">  
+            <h3>Update Details</h3>  
+        </div> 
+        <div class="mb-3"> 
+            <label>Transaction ID:</label>  
+            <input type="text" class="form-control" name="name" id="id_name" required maxlength="100" value="{{ employee.name }}" />  
+        </div> 
+        <div class="mb-3"> 
+            <label>Amount:</label>  
+            <input type="email" class="form-control" name="email" id="id_email" required maxlength="254" value="{{ employee.email }}" />  
+        </div> 
+        <div class="mb-3"> 
+            <button type="submit" class="btn btn-success btn-lg">Update</button>  
+        </div> 
+    </div>  
+    </form>  
+{% endblock content %}   

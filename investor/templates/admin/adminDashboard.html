@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+	<link rel="stylesheet" href="{% static 'styles/adminDashboard.css' %}">
+
+      <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span>
+        </div>
+        <div class="header-right">
+          <span  class="material-icons-outlined">notifications</span>
+          <span  class="material-icons-outlined">email</span>
+		  <a href="{% url "admin_logout" %}" ><span style="color: red;" class="material-icons-outlined">logout</span></a>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">shopping_cart</span> Codius
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+			  <a href="{% url "workplace" %} " target="_blank">
+              <span class="material-icons-outlined">dashboard</span> Workplace
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+			  <a href="{% url "deposited_amount" %}" target="_blank">
+              <span class="material-icons-outlined">inventory_2</span> Deposit
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="{% url "amount_withdrawn" %}" target="_blank">
+              <span class="material-icons-outlined">category</span> Withdraw
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+			  <a href="{% url "all_users" %}" target="_blank">
+              <span class="material-icons-outlined">groups</span> Customers
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+			  <a href="{% url "transactions_history" %}" target="">
+              <span class="material-icons-outlined">fact_check</span> Transactions Hist.
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">poll</span> Reports
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">Messages</span> Settings
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <h2>DASHBOARD</h2>
+        </div>
+		<!-- messages -->
+		<div class="messages">
+			{% for message in messages %}
+				{% if "success" in message.tags %}
+				<span id='message' style="color: green; top: 10%;">{{ message }}</span>
+				{% else %}
+					<span id='message' style="color: red; top: 10%;">{{ message }}</span>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+        <div class="main-cards">
+			
+			<div class="card">
+          <a style="text-decoration: None; color: white;" href="{% url "all_users" %}" target="_blank" >
+            <div class="card-inner">
+              <h3>CUSTOMERS</h3>
+              <span class="material-icons-outlined">inventory_2</span>
+            </div>
+				<div hx-get="{% url 'customers' %}" hx-target="#customers" hx-trigger="load delay:2s"> 
+				<h1> 
+					<div id="customers">
+						<span class="num" data-value="{{ customers }}">0.00</span>
+					</div>
+				</h1>
+
+			</div>	
+		  </a>
+          </div>
+
+          <div class="card">
+          <a style="text-decoration: None; color: white;" href="{% url "deposited_amount" %}" target="_blank">
+            <div class="card-inner">
+              <h3>DEPOSITED</h3>
+              <span class="material-icons-outlined">category</span>
+            </div>
+			<div hx-get="{% url 'deposited' %}" hx-target="#balance" hx-trigger="reload"> 
+			
+				<h1> 
+					<div id="deposited">
+						{{ deposited }}
+					</div>
+				</h1>
+
+			</div>
+			</a>
+          </div>
+
+          <div class="card">
+          <a style="text-decoration: None; color: white;" href="{% url "amount_withdrawn" %}">
+            <div class="card-inner">
+              <h3>WITHDRAWN</h3>
+              <span class="material-icons-outlined">groups</span>
+            </div>
+            <div> 
+			
+				<h1> 
+					<div>
+						{{withdrawed}}
+					</div>
+				</h1>
+
+			</div>
+			</a>
+          </div>
+
+          <div class="card">
+          <a style="text-decoration: None; color: white;" href="{% url "all_users" %}">
+            <div class="card-inner">
+              <h3>Total amount</h3>
+              <span class="material-icons-outlined">notification_important</span>
+            </div>
+			<div hx-get="{% url 'refresh_balance' %}" hx-target="#balance" hx-trigger="load delay:2s"> 
+			
+				<h1> 
+					<div>
+						{{ total_amount }}
+					</div>
+				</h1>
+				<h3> 
+					bonus 
+					<div>
+						{{ total_bonus }}
+					</div>
+				</h3>
+
+			</div>	
+		  </a>
+          </div>
+
+        </div>
+
+        <div class="charts">
+
+          <div class="charts-card">
+            <h2 class="chart-title">Top 5 Products</h2>
+			<button  onclick="refreshChart(event)">Refresh Chart</button>
+			<div id="bar-chart"></div>
+          </div>
+
+          <div class="charts-card">
+            <h2 class="chart-title">Purchase and Sales Orders</h2>
+            <div id="area-chart"></div>
+          </div>
+
+        </div>
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+	<script>
+	  window.products = {{ products|safe }};
+	</script>
+	<script src="{% static 'js/adminDashboard.js' %}"></script>
+	<script src="{% static 'js/counter.js' %}"></script>
+  </body>
+</html>
+

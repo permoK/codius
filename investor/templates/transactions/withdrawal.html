@@ -1,0 +1,52 @@
+<!-- //myapp/templates/show.html -->
+{% extends "base.html" %}
+  
+{% block title %} Withdraw {% endblock title %}
+  
+{% block heading %} Withdraw {% endblock heading %}
+
+{% block content %}
+ <div class="col-md-12">
+        <div class="table-responsive">
+			<!-- message -->
+		{% for message in messages %}
+				{% if "success" in message.tags %}
+				<span id='message' style="color: green; top: 10%;">{{ message }}</span>
+				{% else %}
+					<span id='message' style="color: red; top: 10%;">{{ message }}</span>
+				{% endif %}
+			{% endfor %}
+
+		<table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <th><input type="checkbox" id="checkall" /></th>
+            <th>ID</th>
+            <th>Username</th>
+			<th>phone number</th>
+			<th>confirmation name</th>
+			<th>Amount Withdrawn</th>
+			<th>Date</th>
+            <th>Edit</th>
+            <th>Action</th>
+			<th>Delete</th>
+        </thead>
+        <tbody>
+        {% for user in user  %}  
+            <tr>  
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>{{ user.id }}</td> 
+            <td>{{ user.username }}</td>
+			<td>{{ user.phone_number }}</td>
+			<td>{{ user.confirmation_name }}</td>
+			<td>{{ user.amount }}</td>
+			<td>{{ user.date }}</td>
+            <td><a href="/edit_withdraw/{{ user.id }}" class="btn btn-primary">Edit</a></td>
+            <td><a href="/make_withdraw/{{ user.id }}" class="btn btn-success">Withdraw</a></td>  
+            <td><a href="/destroy_withdraw/{{ user.id }}" class="btn btn-danger">Delete</a></td>
+			</tr>  
+		{% endfor %}
+        </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,424 @@
+ /*
+      These are the default styles. No need to change these.
+      */
+
+ /*@import url(https://fonts.googleapis.com/css?family=Roboto);*/
+
+ :root {
+     --dark-blue: #200764;
+     --white: #ffffff;
+     --grey: #BDBDBD;
+     --grey-d1: #212121;
+     --grey-d2: #BDBDBD;
+     --grey-l1: #eeeeee;
+     --grey-l2: #E0E0E0;
+ }
+ @font-face {
+     font-family: 'Poppins';
+     src: url(../font/Poppins-ExtraBold.woff);
+ }
+ html, body {
+     margin: 0;
+     padding: 0;
+     overflow-x: hidden;
+ }
+ body {
+     font-family: 'Roboto', sans-serif;
+ }
+ .autosort-header{
+  display: flex;
+  margin-bottom: 3%;
+}
+ .bg-color {
+     background-color: var(--dark-blue);
+     margin: 0;
+     padding: 0;
+     width: 100vw;
+     height: 100vh;
+     overflow-y: hidden;
+ }
+ .bg-img {
+     background: linear-gradient( rgba(40, 40, 40, 0.60), rgba(40, 40, 40, 0.60)), url(../img/svg/dashboard_v3.svg);
+     background-repeat: repeat;
+     background-size: 50%;
+     margin: 0;
+     padding: 0;
+     width: 100vw;
+     height: 100vh;
+     overflow-y: hidden;
+ }
+ .box {
+     height: 30%;
+ }
+ .btn-container {
+     display: flex;
+     justify-content: center;
+     align-items: flex-end;
+     margin-left: 15%;
+ }
+ .button {
+     background-color: var(--grey-l2);
+     border-radius: 10px;
+     cursor: pointer;
+     height: 50px;
+     width: 50px;
+     margin-left: 40px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ .button:hover {
+     background-color: var(--grey-d1);
+     /*   transition-timing-function: ease-in-out;*/
+     transition: 0.5s;
+ }
+ .card1, .card2, .card3, .card4 {
+     background-color: var(--white);
+     box-shadow: 2px 2px 5px 2px var(--grey);
+     border-radius: 10px;
+ }
+ .controls{
+  margin-left: auto;
+  display: flex;
+  margin-right: 20px;
+}
+ .divider {
+     width: 100%;
+     height: 1px;
+     background-color: var(--grey-l1);
+ }
+ .divider-lg {
+     width: 95%;
+     height: 3px;
+     margin: auto;
+     background-color: var(--grey-l1);
+ }
+ footer{
+     width: 100%;
+     height: 150px;
+     background-color: var(--dark-blue);
+     margin: 10% 0 0 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ .footer-btn{
+     border: solid #0ABFFD;
+     border-width: 1px;
+     border-radius: 2px;
+     cursor: pointer;
+     width: 100px;
+     height: 50px;
+     margin-left: 20px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ .footer-btn:hover{
+     background-color: #0ABFFD;
+     box-shadow: 1px 1px 20px 2px #0ABFFD;
+     transition: 0.5s;
+     color: var(--dark-blue);
+ }
+ .footer-btn-txt{
+     color: var(--white);
+ }
+  .footer-content{
+     display: flex;
+     padding: 20px;
+ }
+ .footer-link{
+     text-decoration: none !important;
+ }
+ .github-img {
+     background: url(../images/github.png) center center no-repeat;
+     background-size: contain;
+     height: 35px;
+     width: 35px;
+ }
+ h1 {
+     color: white;
+     text-align: center;
+     letter-spacing: 1px;
+     font-family: 'Poppins', sans-serif;
+     font-size: 44px;
+ }
+ h2 {
+     color: var(--grey-d1);
+     font-family: 'roboto';
+     font-size: 24px;
+     text-align: center;
+ }
+ h3{
+     color: white;
+     font-size: 1em;
+     font-family: 'roboto';
+     text-align: center;
+ }
+ h4 {
+     margin-left: 10px;
+     color: var(--grey-d1);
+     font-size: 12px;
+ }
+ .img-container {
+     width: 100%;
+     height: 70%;
+ }
+ .view-img {
+     background: url(../images/view.png) center center no-repeat;
+     background-size: contain;
+     height: 35px;
+     width: 35px;
+ }
+ .selection{
+  margin-left: 20px;
+  border: 1px solid var(--grey);
+  padding-left: 5px;
+  border-radius: 3px;
+}
+ .text-header {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 100vw;
+     height: 100vh;
+ }
+ .title-container {
+     text-align: center;
+ }
+ .text-content{
+     font-family: "Roboto";
+     font-size: 1em;
+     color: var(--grey-d1);
+     margin: 20% 10% 2% 10%;
+     text-indent: 30px;
+     text-align: justify;
+ }
+ .text-important{
+     font-weight: bold;
+ }
+ .text-link{
+     color: var(--grey-d1);
+ }
+ /*dashboard layout image files*/
+
+ /*3 widgets design layout 1*/
+
+ .d3-l1-img {
+     background: url("{% static 'images/d3_l2.png' %}") center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*3 widgets design layout 2*/
+
+ .d3-l2-img {
+     background: url(../img/png/d3_l2.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*3 widgets design layout 3*/
+
+ .d3-l3-img {
+     background: url(../img/png/d3_l3.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*3 widgets design layout 4*/
+
+ .d3-l4-img {
+     background: url(../img/png/d3_l4.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*4 widgets design layout 1*/
+
+ .d4-l1-img {
+     background: url(../img/png/d4_l1.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*4 widgets design layout 2*/
+
+ .d4-l2-img {
+     background: url(../img/png/d4_l2.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*4 widgets design layout 3*/
+
+ .d4-l3-img {
+     background: url(../img/png/d4_l3.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*4 widgets design layout 4*/
+
+ .d4-l4-img {
+     background: url(../img/png/d4_l4.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*5 widgets design layout 1*/
+
+ .d5-l1-img {
+     background: url(../img/png/d5_l1.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*5 widgets design layout 2*/
+
+ .d5-l2-img {
+     background: url(../img/png/d5_l2.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*5 widgets design layout 3*/
+
+ .d5-l3-img {
+     background: url(../img/png/d5_l3.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*5 widgets design layout 4*/
+
+ .d5-l4-img {
+     background: url(../img/png/d5_l4.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*6 widgets design layout 1*/
+
+ .d6-l1-img {
+     background: url(../img/png/d6_l1.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*6 widgets design layout 2*/
+
+ .d6-l2-img {
+     background: url(../img/png/d6_l2.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*6 widgets design layout 3*/
+
+ .d6-l3-img {
+     background: url(../img/png/d6_l3.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*6 widgets design layout 4*/
+
+ .d6-l4-img {
+     background: url(../img/png/d6_l4.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*7 widgets design layout 1*/
+
+ .d7-l1-img {
+     background: url(../images/d3_l1.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*7 widgets design layout 2*/
+
+ .d7-l2-img {
+     background: url(../images/d7_l2.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*7 widgets design layout 3*/
+
+ .d7-l3-img {
+     background: url(../images/d7_l3.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }
+ /*7 widgets design layout 4*/
+
+ .d7-l4-img {
+     background: url(../images/d7_l4.png) center center no-repeat;
+     background-size: contain;
+     border-radius: 2%;
+     background-color: var(--grey-l1);
+     width: 95%;
+     height: 100%;
+     margin: 3% auto 0 auto;
+ }

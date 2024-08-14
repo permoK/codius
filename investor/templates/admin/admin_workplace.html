@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+
+{% block title %}
+admin Deposit
+{% endblock title %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'styles/login.css' %}">
+{% endblock %}
+
+
+
+{% block body %}
+<div id="result">
+
+	{% if messages %}
+		{% for message in messages %}
+			{{ message }}
+		{% endfor %}
+	{% endif %}
+
+<h1>Deposit Form</h1>
+<form hx-POST="{% url 'get_transaction' %}" hx-target="#result" hx-push-url="true"> 
+        <!-- <input type="text" id="transaction-id" placeholder="Enter Transaction ID" name="transaction_id"> -->
+		{% csrf_token %}
+
+		<label for="transaction_id">Get Transaction ID:</label>
+		{% render_field form.transactions_id class="form-control" %}
+        <button type="submit">Search</button>
+    </form>
+    <div id="result"></div>
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+</div>
+{% endblock body %}

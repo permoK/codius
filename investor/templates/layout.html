@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple HTML5 Boilerplate template">
+        <title>{% block title  %}{% endblock  %}</title>
+     
+      <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+      <link rel='stylesheet' href="{% static 'styles/layout.css '%}">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+      <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+
+    {% block links %}{% endblock %}
+</head>
+<body>
+	{% block navbar %}
+{% endblock %}
+
+    <main>
+	<div class="heading"> 
+	    {% block heading %}{% endblock %} 
+	</div>
+	    {% block body %}
+
+	    {% endblock  %} 
+   
+    </main>
+	<footer>
+	{% block footer %}    
+        <!-- <p>&copy; 2023 Perminus</p> -->
+	{% endblock footer %}
+
+    </footer>
+	
+    {% block script %}{% endblock %}
+
+<script>
+// Automatically hide the div after 5000 milliseconds (5 seconds)
+  setTimeout(function() {
+    document.getElementById('message').style.display = 'none';
+  }, 5000);
+</script>
+
+<script>
+        const button = document.getElementById('colorSwitchButton');
+        const root = document.documentElement;
+
+        button.addEventListener('click', function() {
+            const currentBgColor = getComputedStyle(root).getPropertyValue('--bg').trim();
+            const currentTxtColor = getComputedStyle(root).getPropertyValue('--txt').trim();
+
+            // Toggle colors
+            root.style.setProperty('--bg', currentTxtColor);
+            root.style.setProperty('--txt', currentBgColor);
+
+            // Save the current color scheme to localStorage
+            localStorage.setItem('colorScheme', JSON.stringify({ bg: currentTxtColor, txt: currentBgColor }));
+        });
+
+        // Check if there's a color scheme saved in localStorage and apply it
+        const savedColorScheme = localStorage.getItem('colorScheme');
+        if (savedColorScheme) {
+            const { bg, txt } = JSON.parse(savedColorScheme);
+            root.style.setProperty('--bg', bg);
+            root.style.setProperty('--txt', txt);
+        }
+    </script>
+</body>
+</html>

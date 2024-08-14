@@ -1,0 +1,37 @@
+<!-- //myapp/templates/show.html -->
+{% extends "base.html" %}
+  
+{% block title %}Customer Records{% endblock title %}
+  
+{% block heading %}Customer Records{% endblock heading %}
+
+{% block content %}
+ <div class="col-md-12">
+        <span><a href="/auth/register" class="btn btn-primary">Add New User</a></span>  
+        <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <th><input type="checkbox" id="checkall" /></th>
+            <th>ID</th>
+            <th>Username</th>
+			<th>email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+        {% for user in profile  %}  
+            <tr>  
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>{{ user.id }}</td> 
+            <td>{{ user.username }}</td>  
+			<td>{{ user.email }}</td>
+            <td><a href="/edit/{{ user.id }}" class="btn btn-primary">Edit</a></td>
+            <td><a href="/delete/{{ user.id }}" class="btn btn-danger">Delete</a></td>  
+            </tr>  
+
+		{% endfor %}
+        </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock content %}

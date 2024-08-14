@@ -1,0 +1,23 @@
+<div id="result">
+	{% if messages %}
+		{% for message in messages %}
+			{{ message }}
+		{% endfor %}
+	{% endif %}
+
+	<div id="username">
+		
+	
+	</div>
+<form id="search-form"> 
+        <!-- <input type="text" id="transaction-id" placeholder="Enter Transaction ID" name="transaction_id"> -->
+		{% csrf_token %}
+
+		<label for="transaction_id">Amount:</label>
+		{{ form.as_p }}
+		
+		<button  id="search-button" hx-POST="{% url 'deposit' %}" hx-target="#result" hx-push-url="true" >Deposit</button>
+</form>
+
+</div>
+
