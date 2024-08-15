@@ -800,6 +800,11 @@ def init_stk(request):
 @method_decorator(csrf_exempt, name='dispatch')
 class MpesaStkPushCallbackView(View):
     def post(self, request):
+        try:
+            data = json.loads(request.body)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+
         data = json.loads(request.body.decode('utf-8'))
         body = data.get('Body', {})
         stk_callback = body.get('stkCallback', {})
